@@ -1,0 +1,46 @@
+<div class="container">
+
+    <div class="text-center" *ngIf="Employee.length==0">
+        <h2>There is no employee available ...</h2>
+        <button class="btn btn-success" routerLink="/create-emp">Add New Employee</button>
+
+    </div>
+
+
+    <!-- List Employees in table -->
+    <div *ngIf="Employee.length !== 0">
+        <h2>Employee List</h2>
+        <button class="btn btn-success" routerLink="/create-emp">Add New Employee</button>
+
+        <div class="col-sm-12">
+            <table class="table table-striped">
+                <thead class="bg-dark text-light">
+                    <tr>
+                        <th scope="col">User ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Edit/Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let emp of Employee">
+                        <td>{{emp.id}}</td>
+                        <td>{{emp.name}}</td>
+                        <td>{{emp.email}}</td>
+                        <td>{{emp.phone}}</td>
+                        <td>
+                            <a class="btn btn-primary" routerLink="/emp-edit/{{emp.id}}">Edit</a>
+                            <a class="btn btn-danger" (click)="deleteEmployee(emp.id)">Delete</a>
+                        </td>
+                    </tr>
+                   
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
